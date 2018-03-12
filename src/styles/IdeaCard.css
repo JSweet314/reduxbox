@@ -1,0 +1,42 @@
+article {
+  border-bottom: 1px solid lightgray;
+  margin: 2rem 0 0 0;
+  width: 50%;
+}
+
+article h2 {
+  display: inline-block;
+  color: #6d6e71;
+  font-family: 'Roboto Slab', serif;
+  width: 80%;
+  margin: 0;
+  font-size: 3rem;
+}
+
+article p {
+  color: #939598;
+  width: 100%;
+  font-size: 2rem;
+}
+
+.deleteBtn,
+.upVoteBtn,
+.downVoteBtn {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+.deleteBtn {
+  font-size: 3rem;
+  float: right;
+  width: 3rem;
+  height: 3rem;
+}
+
+button.upVoteBtn,
+button.downVoteBtn {
+  font-size: 2rem;
+  margin: 0 1rem 0 0;
+}
