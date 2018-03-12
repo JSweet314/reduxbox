@@ -106,7 +106,8 @@ const mapStateToProps = (state) => {
 };
 
 IdeaForm.propTypes = {
-  addIdea: PropTypes.func.isRequired
+  addIdea: PropTypes.func.isRequired,
+  ideas: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default connect(mapStateToProps, matchDispatchToProps)(IdeaForm);
