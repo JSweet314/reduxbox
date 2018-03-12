@@ -6,7 +6,7 @@ import '../styles/QualitySelect.css';
 
 const QualitySelect = ({filterQuality}) => {
   return (
-    <div className="quality-select">Quality: 
+    <div className="quality-select">Filter by Idea Quality: 
       <select 
         name="quality"
         id="select"
