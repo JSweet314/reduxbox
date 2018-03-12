@@ -41,6 +41,18 @@ const searchValue = (state = '', action) => {
   }
 };
 
-const allReducers = combineReducers({ideas, searchValue});
+const qualityFilter = (state = '', action) => {
+  switch (action.type) {
+  case 'FILTER_QUALITY':
+    if (action.quality === 'all') {
+      return '';
+    }
+    return action.quality;
+  default:
+    return state;
+  }
+};
+
+const allReducers = combineReducers({ideas, searchValue, qualityFilter});
 
 export default allReducers;

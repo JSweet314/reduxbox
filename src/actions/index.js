@@ -39,3 +39,10 @@ export const searchIdeas = (searchValue) => {
     searchValue
   };
 };
+
+export const filterQuality = (quality) => {
+  return {
+    type: 'FILTER_QUALITY',
+    quality
+  };
+};

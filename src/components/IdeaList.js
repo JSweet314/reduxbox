@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import IdeaCard from './IdeaCard';
+import QualitySelect from './QualitySelect';
 import {searchIdeas} from '../actions/index';
 import '../styles/IdeaList.css';
 
-const IdeaList = ({searchValue, searchIdeas, ideas}) => {
+const IdeaList = ({searchValue,qualityFilter, searchIdeas, ideas}) => {
   return (
     <div className="card-container">
       <input
@@ -16,10 +17,12 @@ const IdeaList = ({searchValue, searchIdeas, ideas}) => {
         value={searchValue}
         onChange={(e) => searchIdeas(e.target.value)}
       />
+      <QualitySelect />
       {
         ideas.map(idea => {
-          const containsSearchValue = idea.title.includes(searchValue)
-            || idea.body.includes(searchValue);
+          const containsSearchValue = (idea.title.includes(searchValue)
+            || idea.body.includes(searchValue)) 
+            && idea.quality.includes(qualityFilter);
 
           if (containsSearchValue) {
             return (
@@ -36,7 +39,8 @@ const IdeaList = ({searchValue, searchIdeas, ideas}) => {
 const mapStateToProps = (state) => {
   return {
     ideas: state.ideas,
-    searchValue: state.searchValue
+    searchValue: state.searchValue,
+    qualityFilter: state.qualityFilter
   };
 };
 

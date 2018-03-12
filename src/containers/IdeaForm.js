@@ -12,7 +12,9 @@ class IdeaForm extends Component {
     this.state = {
       titleInput: '',
       bodyInput: '',
-      isDisabled: true
+      isDisabled: true,
+      titleChars: 120,
+      bodyChars: 120
     };
   }
 
@@ -21,7 +23,8 @@ class IdeaForm extends Component {
 
     this.setState({
       titleInput: event.target.value,
-      isDisabled: !waitingForUserInput
+      isDisabled: !waitingForUserInput,
+      titleChars: 120 - event.target.value.length
     });
   }
 
@@ -30,7 +33,8 @@ class IdeaForm extends Component {
 
     this.setState({
       bodyInput: event.target.value,
-      isDisabled: !waitingForUserInput
+      isDisabled: !waitingForUserInput,
+      bodyChars: 120 - event.target.value.length
     });
   }
 
@@ -63,16 +67,20 @@ class IdeaForm extends Component {
           className="title-input" 
           type="text"
           placeholder="title"
+          maxLength="120"
           value={this.state.titleInput}
           onChange={event => this.updateTitleInput(event)}
         />
+        <p>Characters remaining: {this.state.titleChars}</p>
         <input 
           className="body-input" 
           type="text" 
           placeholder="body"
+          maxLength="120"
           value={this.state.bodyInput}
           onChange={event => this.updateBodyInput(event)}
         />
+        <p>Characters remaining: {this.state.bodyChars}</p>
         <button 
           className="saveBtn"
           disabled={this.state.isDisabled}
@@ -91,7 +99,7 @@ const matchDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    ideas: state.ideas
+    ideas: state.ideas,
   };
 };
 
